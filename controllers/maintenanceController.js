@@ -1,4 +1,4 @@
-import MaintenanceRequest from "../models/maintenanceRequest.js";
+import MaintenanceRequest from "../models/MaintenanceRequest.js";
 
 
 // Get all maintenance requests
