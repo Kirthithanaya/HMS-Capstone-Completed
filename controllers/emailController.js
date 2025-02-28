@@ -1,4 +1,5 @@
-import { sendEmail } from "../config/emailService.js";
+import sendEmail from "../utils/sendEmail.js";
+
 
 export const sendPaymentReceipt = async (req, res) => {
   try {

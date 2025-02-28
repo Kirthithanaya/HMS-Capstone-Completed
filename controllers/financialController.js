@@ -1,4 +1,4 @@
-import FinancialReport from "../models/financialReport.js";
+import FinancialReport from "../models/FinancialReport.js";
 
 // @desc   Generate Financial Report
 // @route  POST /api/financial
