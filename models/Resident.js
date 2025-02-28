@@ -25,6 +25,10 @@ const residentSchema = mongoose.Schema(
     checkOutDate: {
       type: Date,
     },
+    status: { type: String,
+       enum: ["Active", "Checked Out"],
+        default: "Active"
+       },
   },
   { timestamps: true }
 );

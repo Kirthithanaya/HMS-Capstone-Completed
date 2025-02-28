@@ -35,6 +35,47 @@ export const createResident = async (req, res) => {
     }
   };
 
+// Get all residents
+export const getResidents = async (req, res) => {
+  try {
+    const residents = await Resident.find().populate("room");
+    res.status(200).json(residents);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+// Update a resident
+export const updateResident = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedResident = await Resident.findByIdAndUpdate(id, req.body, { new: true });
+
+    if (!updatedResident) {
+      return res.status(404).json({ message: "Resident not found" });
+    }
+
+    res.status(200).json(updatedResident);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Delete a resident
+export const deleteResident = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resident = await Resident.findByIdAndDelete(id);
+
+    if (!resident) {
+      return res.status(404).json({ message: "Resident not found" });
+    }
+
+    res.status(200).json({ message: "Resident deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Assign a room to a resident (Check-In)
 export const assignRoom = async (req, res) => {
     const { residentId, roomNumber } = req.body;

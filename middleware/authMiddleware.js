@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userSchema.js";
 import dotenv from "dotenv";
+import Admin from '../models/Admin.js';
 dotenv.config();
 
 // Protect routes (Only logged-in users can access)
@@ -44,4 +45,22 @@ export const protect = async (req, res, next) => {
     };
   };
 
-  export default authMiddleware;
+  export const protectAdmin = async (req, res, next) => {
+    let token;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        try {
+            token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            req.admin = await Admin.findById(decoded.id).select('-password');
+            next();
+        } catch (error) {
+            res.status(401).json({ message: 'Not authorized, token failed' });
+        }
+    } else {
+        res.status(401).json({ message: 'Not authorized, no token' });
+    }
+};
+
+    
+
+export default authMiddleware;

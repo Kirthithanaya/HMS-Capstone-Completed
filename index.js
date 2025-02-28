@@ -10,6 +10,8 @@ import Billing from "./Routers/billingRouter.js";
 import Payment from "./Routers/payment.js";
 import financialRouter from "./Routers/financialRouter.js";
 import user from "./Routers/userRouter.js"
+import notifications from "./Routers/notificationRouter.js"
+import Admin from "./Routers/adminRouter.js"
 
 
 
@@ -30,6 +32,8 @@ app.use("/api/billing", Billing)
 app.use("/api/payment", Payment)
 app.use("/api/financial", financialRouter)
 app.use("/api/users", user)
+app.use("/api/notifications", notifications)
+app.use("/api/admin", Admin)
 
 
 const port = process.env.PORT || 4000;
