@@ -1,7 +1,6 @@
 import MaintenanceRequest from "../models/maintenanceRequest.js";
 
 
-
 // Get all maintenance requests
 export const getRequests = async (req, res) => {
     try {
