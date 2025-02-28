@@ -1,5 +1,5 @@
 import MaintenanceRequest from "../models/maintenanceRequest.js";
-import MaintenanceRequest from "../models/maintenanceRequest.js";
+
 
 
 // Get all maintenance requests
